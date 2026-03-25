@@ -1,0 +1,125 @@
+You are initializing a NEW repository. Review the context.md to get situated with the goal.
+
+GOAL: Create a minimal, receipts-first, append-only, Git-ready scaffold that works for software, agents, research tools, services, or experiments based on the provided context.md.
+
+The structure must:
+
+- Be deterministic
+- Support parallel agents
+- Support git discipline
+- Prevent drift
+- Require no later restructuring
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ FILE MAP ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+docs/ 00_MISSION.md 01_ARCHITECTURE.md 02_TASKS.md 03_RISKS.md 04_PROGRESS.md ← session summaries (append-only) 05_INSITU.md ← heartbeat / jump-back-in log (append-only) 06_RECEIPTS.md ← proof entries (append-only, use if project calls for it) 07_BUILD_SUMMARIES.md ← phase/pass outcomes (append-only, always include) 08_DECISIONS.md ← ADR-lite (append-only)
+
+Standard folders: src/ tests/ scripts/ .learnings/
+
+Root files: README.md AGENT_CONTRACT.md .gitignore (package.json OR minimal runtime manifest ONLY if runtime requires it)
+
+RULES:
+
+- DO NOT rename files.
+- DO NOT omit files.
+- DO NOT add dependencies unless runtime requires it.
+- All docs must be append-only compatible.
+- If something is ambiguous: ask, don't assume. Log outcome in docs/08_DECISIONS.md.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ DOC CONTENT RULES ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+00_MISSION.md
+
+- Purpose (1 paragraph)
+- Target user
+- Definition of Done
+- Non-goals
+
+01_ARCHITECTURE.md
+
+- Components
+- Data flow
+- Interfaces / contracts
+- Invariants (3–7)
+- Failure modes (3–7)
+
+02_TASKS.md Ordered, small, acceptance-first tasks. Each task MUST include: - ID (T001…) - Title - Description - Files likely touched - Acceptance checkboxes - Verification method - Safety / rollback note
+
+03_RISKS.md Technical / Product / Security / Unknowns. Each risk: 1 line + mitigation hint.
+
+04_PROGRESS.md (append-only — session summaries only) Format: ### YYYY-MM-DD HH:MM STATE: OPEN LOOPS: NEXT 3:
+
+05_INSITU.md (append-only — compact heartbeat, primary jump-back-in surface) Format: ### YYYY-MM-DD HH:MM DONE: PROOF: NEXT:
+
+06_RECEIPTS.md (append-only — use when project calls for proof entries) Each entry MUST include: - Timestamp - Task ID - Files changed - Commands run - Verification output - Commit hash (if available)
+
+07_BUILD_SUMMARIES.md (append-only — append after completing a phase or passing acceptance) Format: ### YYYY-MM-DD — [Phase / Task label] - What shipped: - What did not ship: - Notes:
+
+08_DECISIONS.md (append-only — ADR-lite) Format: Context → Decision → Consequence
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ AGENT CONTRACT (MANDATORY CONTENT) ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+AGENT_CONTRACT.md must enforce:
+
+1. One task at a time (from 02_TASKS.md)
+2. No silent refactors
+3. Ask before adding dependencies
+4. Every meaningful change requires:
+    - INSITU entry (05_INSITU.md)
+    - RECEIPT entry (06_RECEIPTS.md)
+5. After completing a phase or passing acceptance:
+    - Append a BUILD SUMMARY to 07_BUILD_SUMMARIES.md
+6. If stopping:
+    - Append PROGRESS entry to 04_PROGRESS.md derived from INSITU tail
+7. If confused:
+    - Ask max 3 precise questions
+8. If context bloats:
+    - Propose clean session handoff: active task ID, links to last INSITU / RECEIPT / PROGRESS, and blockers
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ GIT DISCIPLINE (MANDATORY) ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Include in README:
+
+Workflow:
+
+1. Implement task
+2. Write INSITU entry
+3. Write RECEIPT entry
+4. Run verification
+5. Commit using structured format
+6. Append BUILD SUMMARY when phase / acceptance passes
+
+Commit message format:
+
+[type]: short summary
+
+TASK: T### SCOPE: path/component WHY: reason PROOF: test/output/hash
+
+Allowed types: feat | fix | refactor | docs | test | chore
+
+If no PROOF exists, task is incomplete.
+
+Include optional .gitmessage template content in README.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ INITIAL ENTRIES REQUIRED ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+After generating scaffold:
+
+1. Write first RECEIPT entry proving scaffold creation (06_RECEIPTS.md)
+2. Write first INSITU entry (05_INSITU.md)
+3. Write first PROGRESS entry (04_PROGRESS.md)
+4. Write first BUILD SUMMARY entry (07_BUILD_SUMMARIES.md)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ OUTPUT FORMAT ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Return ONLY:
+
+1. Folder tree
+2. Full contents of every docs file
+3. Root files (README, AGENT_CONTRACT, .gitignore, manifest if used)
+4. First RECEIPT entry
+5. First INSITU entry
+6. First PROGRESS entry
+7. First BUILD SUMMARY entry
+
+Stop after scaffold.
