@@ -31,3 +31,13 @@ Project proof entries. Mirror or supplement JSON receipts under `receipts/` when
 - **Commands run:** `git init`; `git add -A`; `git commit`; `git remote add origin https://github.com/verti-forge/iad-detector.git`; `git fetch`; `git merge origin/main --allow-unrelated-histories`; `git push -u origin main`  
 - **Verification output:** push reported `main -> main`  
 - **Commit hash:** `afd0629` (merge tip on `main`)
+
+---
+
+### 2026-03-25T15:05:00Z
+
+- **Task ID:** publish (doc trail)  
+- **Files changed:** `docs/05_INSITU.md`, `docs/06_RECEIPTS.md`  
+- **Commands run:** `git commit`; `git push`  
+- **Verification output:** `8f4106c..main` on origin  
+- **Commit hash:** `8f4106c`
