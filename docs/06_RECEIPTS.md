@@ -50,4 +50,4 @@ Project proof entries. Mirror or supplement JSON receipts under `receipts/` when
 - **Files changed:** `tests/fixtures.py` (`TRACE_CASES` + 8 new packets), `tests/test_traces.py` (`test_t003_*`), `docs/02_TASKS.md`, `docs/05_INSITU.md`, `docs/04_PROGRESS.md`, `docs/06_RECEIPTS.md`, `docs/07_BUILD_SUMMARIES.md`  
 - **Commands run:** `python -m pytest -q`  
 - **Verification output:** `15 passed`  
-- **Commit hash:** `294d1c2`
+- **Commit hash:** `6611076` (T003 feature; rebased on `origin/main`)
