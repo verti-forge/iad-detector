@@ -1,6 +1,6 @@
-# Putline
+# Putline / iad-detector
 
-Putline is the **Surface-Line / Execution Surface** protocol: one compact line for loop integrity (state, task, proof, next, and in v2/v3 receipt, mode, gate, owner). This repo holds the **receipts-first scaffold** for tooling—currently **IAD Detector v0** (Intent–Action Decoupling)—plus the doc spine agents use to avoid drift.
+**IAD Detector:** Intent–Action Decoupling detection for agent execution loops. This repo also documents **Putline**, the Surface-Line / Execution Surface protocol: one compact line for loop integrity (state, task, proof, next, and in v2/v3 receipt, mode, gate, owner). It includes the **receipts-first scaffold** for tooling plus the doc spine agents use to avoid drift.
 
 - **Narrative spec:** `putline-CONTEXT.txt`
 - **Scaffold rules:** `scaffold-template.txt`
@@ -70,4 +70,4 @@ Example: `[BUILDING] · implement receipt serializer · receipt JSON emitted · 
 
 ## License
 
-Unspecified in scaffold; add a `LICENSE` file when you publish.
+MIT — see [`LICENSE`](LICENSE).
