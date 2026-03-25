@@ -11,3 +11,9 @@ NEXT: `python -m pytest`; then T003 fake traces; tighten heuristics only after f
 DONE: Added `__main__.py` (`python -m iad_detector`), `constants.WEIGHTS` for coherence tuning, `tests/test_traces.py` regression harness.  
 PROOF: `python -m pytest -q` → 4 passed; `python -m iad_detector` prints JSON.  
 NEXT: Extend `test_traces` with more packets for T003; tune `WEIGHTS` only after trace review.
+
+### 2026-03-25 15:00
+
+DONE: `git init`, merged remote `LICENSE` + template README into full README, pushed `main` to [verti-forge/iad-detector](https://github.com/verti-forge/iad-detector).  
+PROOF: `git push -u origin main` succeeded; tip `afd0629`.  
+NEXT: Optional follow-up commit to sync this INSITU/RECEIPT to remote.

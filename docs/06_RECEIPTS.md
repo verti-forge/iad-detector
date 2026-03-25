@@ -21,3 +21,13 @@ Project proof entries. Mirror or supplement JSON receipts under `receipts/` when
 - **Commands run:** `python -m pytest -q`; `python -m iad_detector`  
 - **Verification output:** `4 passed`  
 - **Commit hash:** (n/a)
+
+---
+
+### 2026-03-25T15:00:00Z
+
+- **Task ID:** publish  
+- **Files changed:** `.git/` (init); merge brought `LICENSE`; `README.md` (conflict resolved); push to `origin`  
+- **Commands run:** `git init`; `git add -A`; `git commit`; `git remote add origin https://github.com/verti-forge/iad-detector.git`; `git fetch`; `git merge origin/main --allow-unrelated-histories`; `git push -u origin main`  
+- **Verification output:** push reported `main -> main`  
+- **Commit hash:** `afd0629` (merge tip on `main`)
