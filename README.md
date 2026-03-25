@@ -1,73 +1,17 @@
-# Putline / iad-detector
 
-**IAD Detector:** Intent–Action Decoupling detection for agent execution loops. This repo also documents **Putline**, the Surface-Line / Execution Surface protocol: one compact line for loop integrity (state, task, proof, next, and in v2/v3 receipt, mode, gate, owner). It includes the **receipts-first scaffold** for tooling plus the doc spine agents use to avoid drift.
+**IAD Detector** is a lightweight execution-integrity primitive for autonomous systems.
 
-- **Narrative spec:** `putline-CONTEXT.txt`
-- **Scaffold rules:** `scaffold-template.txt`
-- **Mission & architecture:** `docs/00_MISSION.md`, `docs/01_ARCHITECTURE.md`
-- **Agent rules:** `AGENT_CONTRACT.md`
+It catches **Intent–Action Decoupling** before an agent acts: cases where the current mission, proposed action, available proof, and declared next step are no longer aligned strongly enough to justify execution.
 
-## Layout
+Rather than scoring outputs after the fact, `iad-detector` works as a **pre-action coherence gate**. Given a structured packet, it evaluates:
 
-- `docs/` — `00_MISSION` … `08_DECISIONS` (append-only where noted)
-- `src/iad_detector/` — Python package
-- `tests/` — Pytest
-- `scripts/` — Local examples
-- `.learnings/` — Notes that do not belong in append-only logs
+- whether the task still serves the mission
+- whether the action respects active constraints
+- whether available proof is sufficient for the step being attempted
+- whether the chosen tool fits the task
+- whether the proposed next step is actually justified
 
-## Setup
+The result is a compact decision surface for runtime systems:
+`PASS`, `REVIEW`, `WAIT`, `BLOCK`, or `ESCALATE`.
 
-```bash
-python -m venv .venv
-.venv\Scripts\activate   # Windows
-pip install -e ".[dev]"
-python -m pytest
-python -m iad_detector   # sample CLI run (example packet)
-```
-
-## Git workflow
-
-1. Implement the active task from `docs/02_TASKS.md`
-2. Write an **INSITU** entry (`docs/05_INSITU.md`)
-3. Write a **RECEIPT** entry (`docs/06_RECEIPTS.md`)
-4. Run verification (`python -m pytest`, etc.)
-5. Commit using the structured format below
-6. Append a **BUILD SUMMARY** (`docs/07_BUILD_SUMMARIES.md`) when a phase or acceptance criteria passes
-
-### Commit message format
-
-```
-[type]: short summary
-
-TASK: T### SCOPE: path/component WHY: reason PROOF: test/output/hash
-```
-
-**Allowed types:** `feat` | `fix` | `refactor` | `docs` | `test` | `chore`
-
-If no **PROOF** exists, the task is incomplete.
-
-### Optional `.gitmessage` template
-
-Save as `.gitmessage` and run `git config commit.template .gitmessage`:
-
-```
-# [type]: 50-char subject
-
-# Body (wrap ~72 chars):
-# TASK: T###
-# SCOPE:
-# WHY:
-# PROOF:
-
-# types: feat | fix | refactor | docs | test | chore
-```
-
-## Putline reminder (v1)
-
-`[STATE] · TASK · PROOF · NEXT`
-
-Example: `[BUILDING] · implement receipt serializer · receipt JSON emitted · validate schema`
-
-## License
-
-MIT — see [`LICENSE`](LICENSE).
+This repository contains the v0 detector core, test fixtures, receipt-ready models, and the initial doc spine for the broader **Putline** protocol direction.
