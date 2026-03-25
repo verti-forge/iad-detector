@@ -17,3 +17,9 @@ NEXT: Extend `test_traces` with more packets for T003; tune `WEIGHTS` only after
 DONE: `git init`, merged remote `LICENSE` + template README into full README, pushed `main` to [verti-forge/iad-detector](https://github.com/verti-forge/iad-detector).  
 PROOF: `git push -u origin main` succeeded; tip `afd0629`.  
 NEXT: Optional follow-up commit to sync this INSITU/RECEIPT to remote.
+
+### 2026-03-25 16:00
+
+DONE: Marked T001–T003 complete in `docs/02_TASKS.md`; added `TRACE_CASES` (10 packets) + gate coverage test for T003.  
+PROOF: `python -m pytest -q` → 15 passed.  
+NEXT: T004 Putline parser or tune `WEIGHTS` / heuristics using trace false positives.

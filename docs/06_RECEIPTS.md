@@ -41,3 +41,13 @@ Project proof entries. Mirror or supplement JSON receipts under `receipts/` when
 - **Commands run:** `git commit`; `git push`  
 - **Verification output:** `8f4106c..main` on origin  
 - **Commit hash:** `8f4106c`
+
+---
+
+### 2026-03-25T16:00:00Z
+
+- **Task ID:** T003 (+ T001/T002 status closeout)  
+- **Files changed:** `tests/fixtures.py` (`TRACE_CASES` + 8 new packets), `tests/test_traces.py` (`test_t003_*`), `docs/02_TASKS.md`, `docs/05_INSITU.md`, `docs/04_PROGRESS.md`, `docs/06_RECEIPTS.md`, `docs/07_BUILD_SUMMARIES.md`  
+- **Commands run:** `python -m pytest -q`  
+- **Verification output:** `15 passed`  
+- **Commit hash:** (pending commit)
